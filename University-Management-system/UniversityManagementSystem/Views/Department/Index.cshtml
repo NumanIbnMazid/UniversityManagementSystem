@@ -1,0 +1,38 @@
+﻿
+@using GridMvc.Html
+
+
+@model IEnumerable<UniversityManagementSystem.Models.Department>
+
+@{
+    ViewBag.Title = "View Department Information";
+}
+<style type="text/css">
+    h3,h4 {
+        color: #233885;
+        font-family: 'Agency FB';
+    }
+</style>
+<div>
+    <hr/>
+
+<h3>View All Department</h3>
+    
+    <hr />
+
+    <p>
+        @Html.Grid(Model).Columns(columns =>
+      {
+          columns.Add(st=> st.Code)
+          .Titled("Code");
+            columns.Add(st => st.Name)
+            .Titled("Name");
+          
+
+        }).WithPaging(4).Sortable()
+    </p>
+     
+    </div>
+<h4>
+    @Html.ActionLink("Add New Department", "Save")
+</h4>

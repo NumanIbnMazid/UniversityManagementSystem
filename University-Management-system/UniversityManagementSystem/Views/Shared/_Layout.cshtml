@@ -1,0 +1,299 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title Debugger Global University</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Style.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+	<link href="~/Content/style-responsive.css" rel="stylesheet" />
+	<link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="~/Content/mobiscroll-2.9.5.full.min.css" rel="stylesheet" />
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+	<script src="~/Scripts/jquery-2.2.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <style type="text/css">
+        /*custom css
+        ==========================================================================================================================
+    */
+     /* Fixed sidenav, full height */
+     html, body { 
+      margin:0; 
+      padding:0; 
+      height:100%;
+      min-height: 100%;
+      position:relative;
+
+    }
+    .sidenav {
+      height: 100%;
+      min-height:550px;
+      width: 200px;
+      position: relative;
+      z-index: 1;
+      background-color: #040811;
+      overflow-x: hidden;
+      padding-top: 30px;
+    }
+
+    /* Style the sidenav links and the dropdown button */
+    .sidenav a, .dropdown-btn {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 17px;
+      color: #A8AEFF;
+      display: block;
+      border: none;
+      background: none;
+      width:100%;
+      text-align: left;
+      cursor: pointer;
+      outline: none;
+    }
+
+    /* On mouse-over */
+    .sidenav a:hover, .dropdown-btn:hover {
+      color: #FFD685;
+    }
+
+    /* Main content */
+    .main {
+      margin-left: 200px; /* Same as the width of the sidenav */
+      font-size: 15px; /* Increased text to enable scrolling */
+      padding: 0px 10px;
+    }
+
+    /* Add an active class to the active dropdown button */
+    .active {
+      background-color: #2e4053;
+      color: #38FF84;
+    }
+
+    /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+    .dropdown-container {
+      display: none;
+      background-color: #1B1818;
+      padding-left: 8px;
+      font-size: 10px !important;
+    }
+
+    /* Optional: Style the caret down icon */
+    .fa-caret-down {
+      float: right;
+      padding-right: 8px;
+    } 
+    </style>
+    	<!-- start: Header -->
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="container-fluid" style="background-color:#040811;">
+				
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" @Html.ActionLink("DEBUGGER", "Index", "Home")<span class="sr-only">(current)</span></a>		
+				<!-- start: Header Menu -->
+				<div class="nav-no-collapse header-nav">
+					<ul class="nav pull-right">
+
+                        @*<li >@Html.ActionLink("Home", "Index", "Home") <span class="sr-only">(current)</span></li>*@
+
+
+                        <li class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                Department
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu ">
+                                <li>@Html.ActionLink("Save Department", "Save", "Department")</li>
+                                <li>@Html.ActionLink("View All Departments", "Index", "Department")</li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                Course
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Save Course", "Save", "Course")</li>
+                                <li>@Html.ActionLink("View Course Statics", "ShowCourseStatics", "CourseView")</li>
+                                <li>@Html.ActionLink("Unassign All Courses", "UnAssign", "UnAssignCourses")</li>
+
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                Teacher
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Save Teacher", "Save", "Teacher")</li>
+                                <li>@Html.ActionLink("View All Teachers", "Index", "Teacher")</li>
+                                <li>@Html.ActionLink("Assign Course To Teacher", "AssignCourseToTeacher", "CourseAssignToTeacher")</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                Student
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Register Student", "Save", "Student")</li>
+                                <li>@Html.ActionLink("Enroll Student In A Course", "Enroll", "EnrollStudentInCourse")</li>
+                                <li>@Html.ActionLink("Save Student Result", "Save", "StudentResult")</li>
+                                <li>@Html.ActionLink("View Result", "ViewStudentResult", "StudentResult")</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                Classroom
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Allocate Classroom", "Save", "ClassRoom")</li>
+                                <li>@Html.ActionLink("View Class Schedule", "Index", "ClassRoom")</li>
+                                <li>@Html.ActionLink("Unallocate All Classrooms", "UnAllocateClassRoom", "ClassRoom")</li>
+                            </ul>
+                        </li>
+						<!-- end: User Dropdown -->
+					</ul>
+				</div>
+				<!-- end: Header Menu -->
+				
+			</div>
+		</div>
+	</div>
+	<!-- start: Header -->
+    
+    <!-- start: Main Menu -->
+    <div id="sidebar-left" class="span2" style="position:relative; background-color:#040811;height:auto;">
+        <div class="sidenav">
+            <a @Html.ActionLink("Dashboard", "Index", "Home")</a>
+            <div class="menu-container">
+                <button class="dropdown-btn">
+                    Department
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a @Html.ActionLink("Save Department", "Save", "Department")</a>
+                    <a @Html.ActionLink("View All Departments", "Index", "Department")</a>
+                </div>
+            </div>
+            <div class="menu-container">
+                <button class="dropdown-btn">
+                    Course
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a @Html.ActionLink("Save Course", "Save", "Course")</a>
+                    <a @Html.ActionLink("View Course Statics", "ShowCourseStatics", "CourseView")</a>
+                    <a>@Html.ActionLink("Unassign All Courses", "UnAssign", "UnAssignCourses")</a>
+                </div>
+            </div>
+            <div class="menu-container">
+                <button class="dropdown-btn">
+                    Teacher
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a>@Html.ActionLink("Save Teacher", "Save", "Teacher")</a>
+                    <a>@Html.ActionLink("View All Teachers", "Index", "Teacher")</a>                  
+                    <a>@Html.ActionLink("Assign Course To Teacher", "AssignCourseToTeacher", "CourseAssignToTeacher")</a>
+                </div>
+            </div>
+            <div class="menu-container">
+                <button class="dropdown-btn">
+                    Student
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a>@Html.ActionLink("Register Student", "Save", "Student")</a>
+                    <a>@Html.ActionLink("Enroll Student In A Course", "Enroll", "EnrollStudentInCourse")</a>
+                    <a>@Html.ActionLink("Save Student Result", "Save", "StudentResult")</a>
+                    <a>@Html.ActionLink("View Result", "ViewStudentResult", "StudentResult")</a>
+                </div>
+            </div>
+            <div class="menu-container">
+                <button class="dropdown-btn">
+                    Classroom
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a>@Html.ActionLink("Allocate Classroom", "Save", "ClassRoom")</a>
+                    <a>@Html.ActionLink("View Class Schedule", "Index", "ClassRoom")</a>
+                    <a>@Html.ActionLink("Unallocate All Classrooms", "UnAllocateClassRoom", "ClassRoom")</a>
+                </div>
+            </div>
+            <div class="menu-container">
+                <button class="dropdown-btn">
+                    Unallocate
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a>@Html.ActionLink("Unassign All Courses", "UnAssign", "UnAssignCourses")</a>
+                    <a>@Html.ActionLink("Unallocate All Classrooms", "UnAllocateClassRoom", "ClassRoom")</a>
+                </div>
+            </div>
+        </div> 
+    </div>
+    <!-- end: Main Menu -->
+
+    <div class="container body-content" style="margin-left:14%; width:75%; border: 4px; border:4px solid #040811;">
+        <div style="margin-left:40px;">
+            @RenderBody()
+            <hr />
+        </div>
+        
+    </div>
+
+    <footer style="background-color:#040811;">
+        <center>&copy; <i>@DateTime.Now.Year - All rights are reserved by <span style="font-family:'Book Antiqua'; font-size:20px; color:#38FF84; text-decoration:none;">TEAM DEBUGGER</span>
+            || Team Members: <span style="color:#38A9FF;"><a href="https://www.facebook.com/numanibnmazid" style="text-decoration:none;">Numan Ibn Mazid</a>,
+                                 <a href="https://www.facebook.com/debaroy1995" style="text-decoration:none;">Debashish Ray</a>,
+                                 <a href="https://www.facebook.com/nazmulhudacse13502000518" style="text-decoration:none;">Nazmul Huda</a></span></i></center>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery-2.2.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Content/Scripts/bootstrap-hover-dropdown.min.js"></script>
+    <script src="~/Scripts/mobiscroll-2.9.5.full.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-2.2.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+    <script type="text/javascript">
+        //* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
+
+        for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+    </script>
+    
+   @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,67 @@
+﻿@model UniversityManagementSystem.Models.Department
+
+@{
+    ViewBag.Title = "Add Department";
+    
+}
+<style type="text/css">
+    h3,h4{
+        color: #233885;
+        font-family:'Agency FB';
+    }
+    .testMsg{
+
+        width:50%;
+        margin-bottom:10px;
+        background-color: #F4F0F0;
+    }
+</style>
+<hr />
+<h3> Save Department</h3>
+<hr />
+
+@using (Html.BeginForm())
+{
+    if (ViewBag.Mgs != null)
+    {
+        <div class="alert alert-info" role="alert">
+            <p>@ViewBag.Mgs</p>
+        </div>       
+    }
+    @Html.AntiForgeryToken()
+    
+    <div>
+
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            
+            @Html.LabelFor(model => model.Code, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Code)
+                <div class="testMsg">
+                    @Html.ValidationMessageFor(model => model.Code)
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name)
+                <div class="testMsg">
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    <h4>
+        @Html.ActionLink("View All Departments", "Index")
+    </h4>
+}
